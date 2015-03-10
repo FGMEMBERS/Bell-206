@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>ohpanel.ac</path>
+
+  <animation>
+    <object-name>panel</object-name>
+    <object-name>avionicsmaster</object-name>
+    <object-name>aftboost</object-name>
+    <object-name>fwdboost</object-name>
+    <object-name>positionlts</object-name>
+    <object-name>toggle</object-name>
+    <object-name>cabinheat</object-name>
+    <object-name>collisionlts</object-name>
+    <object-name>gyro</object-name>
+    <object-name>pitot</object-name>
+    <object-name>defog</object-name>
+    <object-name>generator</object-name>
+    <object-name>battery</object-name>
+    <object-name>instantlt</object-name>
+    <object-name>cylinder</object-name>
+    <object-name>hydpump0</object-name>
+    <object-name>hydpump</object-name>
+    <object-name>gvnr0</object-name>
+    <object-name>gvnr</object-name>
+    <object-name>engignitors0</object-name>
+    <object-name>engignitors</object-name>
+    <object-name>engstart0</object-name>
+    <object-name>engstart</object-name>
+    <object-name>inletheat0</object-name>
+    <object-name>inletheat</object-name>
+    <object-name>fuelvalve0</object-name>
+    <object-name>fuelvalve</object-name>
+    <object-name>cluster0</object-name>
+    <object-name>cluster</object-name>
+    <object-name>landinglts0</object-name>
+    <object-name>landinglts</object-name>
+    <object-name>instrumentlts0</object-name>
+    <object-name>instrumentlts</object-name>
+    <object-name>cockpitlts0</object-name>
+    <object-name>cockpitlts</object-name>
+    <object-name>cautionbeep0</object-name>
+    <object-name>cautionbeep</object-name>
+    <object-name>cargohook0</object-name>
+    <object-name>cargohook</object-name>
+    <object-name>htrcont0</object-name>
+    <object-name>htrcont</object-name>
+    <object-name>htrpwr0</object-name>
+    <object-name>htrpwr</object-name>
+    <object-name>exthook0</object-name>
+    <object-name>exthook</object-name>
+    <object-name>fmcontrol0</object-name>
+    <object-name>fmcontrol</object-name>
+    <object-name>gps0</object-name>
+    <object-name>gps</object-name>
+    <object-name>comm10</object-name>
+    <object-name>comm1</object-name>
+    <object-name>comm20</object-name>
+    <object-name>comm2</object-name>
+    <object-name>intercom0</object-name>
+    <object-name>intercom</object-name>
+    <object-name>avionicsfan0</object-name>
+    <object-name>avionicsfan</object-name>
+    <object-name>encalt0</object-name>
+    <object-name>encalt</object-name>
+    <object-name>slip.turn0</object-name>
+    <object-name>slip.turn</object-name>
+    <object-name>hobbsmeter0</object-name>
+    <object-name>hobbsmeter</object-name>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>avionicsmaster</object-name>
+    <object-name>aftboost</object-name>
+    <object-name>fwdboost</object-name>
+    <object-name>positionlts</object-name>
+    <object-name>toggle</object-name>
+    <object-name>cabinheat</object-name>
+    <object-name>collisionlts</object-name>
+    <object-name>gyro</object-name>
+    <object-name>pitot</object-name>
+    <object-name>defog</object-name>
+    <object-name>generator</object-name>
+    <object-name>battery</object-name>
+    <object-name>instantlt</object-name>
+    <object-name>cylinder</object-name>
+    <object-name>hydpump0</object-name>
+    <object-name>hydpump</object-name>
+    <object-name>gvnr0</object-name>
+    <object-name>gvnr</object-name>
+    <object-name>engignitors0</object-name>
+    <object-name>engignitors</object-name>
+    <object-name>engstart0</object-name>
+    <object-name>engstart</object-name>
+    <object-name>inletheat0</object-name>
+    <object-name>inletheat</object-name>
+    <object-name>fuelvalve0</object-name>
+    <object-name>fuelvalve</object-name>
+    <object-name>cluster0</object-name>
+    <object-name>cluster</object-name>
+    <object-name>landinglts0</object-name>
+    <object-name>landinglts</object-name>
+    <object-name>instrumentlts0</object-name>
+    <object-name>instrumentlts</object-name>
+    <object-name>cockpitlts0</object-name>
+    <object-name>cockpitlts</object-name>
+    <object-name>cautionbeep0</object-name>
+    <object-name>cautionbeep</object-name>
+    <object-name>cargohook0</object-name>
+    <object-name>cargohook</object-name>
+    <object-name>htrcont0</object-name>
+    <object-name>htrcont</object-name>
+    <object-name>htrpwr0</object-name>
+    <object-name>htrpwr</object-name>
+    <object-name>exthook0</object-name>
+    <object-name>exthook</object-name>
+    <object-name>fmcontrol0</object-name>
+    <object-name>fmcontrol</object-name>
+    <object-name>gps0</object-name>
+    <object-name>gps</object-name>
+    <object-name>comm10</object-name>
+    <object-name>comm1</object-name>
+    <object-name>comm20</object-name>
+    <object-name>comm2</object-name>
+    <object-name>intercom0</object-name>
+    <object-name>intercom</object-name>
+    <object-name>avionicsfan0</object-name>
+    <object-name>avionicsfan</object-name>
+    <object-name>encalt0</object-name>
+    <object-name>encalt</object-name>
+    <object-name>slip.turn0</object-name>
+    <object-name>slip.turn</object-name>
+    <object-name>hobbsmeter0</object-name>
+    <object-name>hobbsmeter</object-name>
+    <emission>
+      <!-- <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop> -->
+      <red>   0.7 </red>
+      <green> 0.7 </green>
+      <blue>  0.7 </blue>
+    </emission>
+  </animation>
+
+</PropertyList>
+
