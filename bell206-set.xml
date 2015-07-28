@@ -13,7 +13,7 @@ Bell 206 simulation config.
 
     <description>Bell 206</description>
     <author>Mojo (3D), StuartC </author>
-    <status>alpha 0.3</status>
+    <status>alpha 0.4</status>
     <license>GPL v2</license>
 
     <flight-model>yasim</flight-model>
@@ -59,14 +59,16 @@ Bell 206 simulation config.
 	<multiplay>
 			<generic>
 				  
-        <!-- Nav lights on -->
-      <int n="0" alias="/controls/lighting/nav-lights-switch" />
+       <!-- Nav lights on -->
+      <int n="0" alias="/controls/switches/nav-lights-switch" />
       <!-- Beacon on -->
-      <int n="1" alias="/controls/lighting/beacon-switch" />
+      <int n="1" alias="/controls/switches/beacon-switch" />
       <!-- Landing lights on -->
-      <int n="2" alias="/controls/lighting/landing-lights-switch" />
+      <int n="2" alias="/controls/switches/landing-lights-switch" />
 	    <!-- Taxi light on -->
-      <int n="3" alias="/controls/lighting/taxi-light-switch" />
+      <int n="3" alias="/controls/switches/strobe-switch" />
+      <!-- Crashed -->
+      <int n="7" alias="/sim/crashed" />
 			
 		
 		<float n="0" alias="/instrumentation/doors/crew/position-norm"/>

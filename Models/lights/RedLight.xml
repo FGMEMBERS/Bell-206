@@ -3,19 +3,19 @@
 <PropertyList>
 
   <model>
-    <name>GreenLightFlare</name>
-    <path>Aircraft/Bell-206/Models/Lights/Flares/GreenLight-flare.xml</path>
+    <name>RedLightFlare</name>
+    <path>Aircraft/Gazelle/Models/Lights/Flares/RedLight-flare.xml</path>
   </model>
 
   <model>
-    <name>GreenLightRemb</name>
-    <path>Aircraft/Bell-206/Models/Lights/Rembrandt/GreenLight-remb.xml</path>
+    <name>RedLightRemb</name>
+    <path>Aircraft/Gazelle/Models/Lights/Rembrandt/RedLight-remb.xml</path>
   </model>
 
   <animation>
     <type>select</type>
-    <object-name>GreenLightFlare</object-name>
-    <object-name>GreenLightRemb</object-name>
+    <object-name>RedLightFlare</object-name>
+    <object-name>RedLightRemb</object-name>
     <condition>
       <and>
         <property>lightpack/nav-lights-intensity</property>

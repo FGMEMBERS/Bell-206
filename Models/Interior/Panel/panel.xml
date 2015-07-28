@@ -301,14 +301,13 @@
   
   <!-- Switches -->
   
-  <model>
+   <model>
 		<name>Landing lights</name>
     <path>Aircraft/Bell-206/Models/Interior/Panel/Instruments/switches/landing-lights.xml</path>
     <offsets> 
-     	<x-m>0.181</x-m>
-			<y-m>-0.14</y-m>
-			<z-m>-0.043</z-m>
-	  <pitch-deg>0</pitch-deg>
+    <x-m>0.183</x-m>
+			<y-m>0.182</y-m>
+			<z-m>-0.06</z-m>
 
     </offsets>
 	</model>
@@ -320,11 +319,14 @@
          
     <condition>
       <equals>
-        <property>controls/switches/landing-light</property>
+        <property>controls/switches/landing-lights-switch</property>
         <value> 1 </value>
       </equals>
     </condition>
-  </animation> 
+  </animation> 	
+  
+  
+ 
   
   <!-- warning panel ligts -->
   

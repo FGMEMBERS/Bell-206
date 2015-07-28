@@ -25,33 +25,9 @@
       crew_door.alias(float_0);
       passenger_door.alias(float_1);
 	  
-	  <![CDATA[
+	   <![CDATA[
 var root = cmdarg();
 var rootindex = root.getIndex();
-srand(); #set seed for random generator
-
-#flame Rembrandt light brightness alternation
-var flamePath = "/ai/models/multiplayer["~ rootindex ~"]/sim/model/V-1/";
-props.globals.initNode(flamePath ~ "flameBright", 0.0, "DOUBLE");
-var flameSeq = [0,0,0,0];
-var curSeq = 0;
-var flameBright = func {
-	flameSeq[curSeq] = 0.5 + rand()*0.5;
-	
-	setprop(flamePath ~ "flameBright", 
-		(flameSeq[0]+flameSeq[1]+flameSeq[2]+flameSeq[3]) / 4);
-	
-	if( curSeq < 3)
-		curSeq += 1;
-	else
-		curSeq = 0;
-		
-	settimer(flameBright, 0.02);
-}
-
-settimer(flameBright, 0.02);
-
-
 var mpPath = "/ai/models/multiplayer["~ rootindex ~"]/";
 
 var lightsPath = mpPath~"lightpack/"; #path to the property node, where all internal values are placed
@@ -68,9 +44,12 @@ var navSwitch = mpPath~"controls/lighting/nav-lights-switch";
 var beaconSwitch = mpPath~"controls/lighting/beacon-switch";
 var strobeSwitch = mpPath~"controls/lighting/strobe-switch";
 var landingSwitch = mpPath~"controls/lighting/landing-lights-switch";
-var taxiSwitch = nil;
-var probeSwitch = nil;
-var whiteSwitch = nil;
+var taxiSwitch = mpPath~"controls/lighting/taxi-light-switch";
+var probeSwitch = mpPath~"controls/lighting/probe-light-switch";
+var whiteSwitch = mpPath~"controls/lighting/white-light-switch";
+
+#switch this from 1 to 0 if you want to use advanced cyclical fading animation of the the nav lights instead of being stable on when the switch is on
+navStillOn = 1;
 
 
 #I need to set listener on some MP transferred properties; this doesn't seem to work well sometimes, so I mirror them to the original location on any change
@@ -80,13 +59,13 @@ var mpVar = {
 		var m = { parents: [mpVar] };
 		m.propIn = propIn;
 		m.propOut = propOut;
-		if(propIn==nil) return m;
+		if(propIn==nil or propOut==nil) return m;
 		m.value = getprop(propIn);
 		setprop(propOut, m.value);
 		return m;
 	},
 	check: func {
-		if(me.propIn==nil) return;
+		if(me.propIn==nil or me.propOut==nil) return;
 		var newValue = getprop(me.propIn);
 		if(newValue != me.value) {
 			setprop(me.propOut, newValue);
@@ -177,17 +156,16 @@ var lightCycle = {
 };
 
 #By default, the switch property is initialized to 1 (only if no value is already assigned). Don't change the class implementation! To override this, set the property manually. You don't need to care if any other code already does it for you. 
-navLights = lightCycle.new(navSwitch, lightsPath~"nav-lights-intensity");
-
-### Uncomment and tune those to customize times ###
-#navLights.fadeIn = 0.0; #fade in time 
-#navLights.fadeOut = 0.0; #fade out time
-#navLights.stayOn = 100; #stable on period
-#navLights.stayOff = 0.0; #stable off period
-#navLights.turnOff = 0.12; #fade out time when turned off
-
- setlistener(navSwitch, func{navS=getprop(navSwitch);if(navS){setprop(lightsPath~"nav-lights-intensity", 1)}else{setprop(lightsPath~"nav-lights-intensity", 0)}});setprop(lightsPath~"nav-lights-intensity", 1);
-
+var navLights = nil;
+if(!navStillOn) {
+	navLights = lightCycle.new(navSwitch, lightsPath~"nav-lights-intensity");
+	### Uncomment and tune those to customize times ###
+	#navLights.fadeIn = 0.4; #fade in time 
+	#navLights.fadeOut = 0.4; #fade out time
+	#navLights.stayOn = 3 + rand()*0.05-0.025; #stable on period
+	#navLights.stayOff = 0.6; #stable off period
+	#navLights.turnOff = 0.12; #fade out time when turned off
+}
 
 
 ### BEACON ###
@@ -249,6 +227,11 @@ fadeLanding = lightFadeInOut.new(landingSwitch, lightsPath~"landing-lights-inten
 fadeTaxi = lightFadeInOut.new(taxiSwitch, lightsPath~"taxi-light-intensity");
 fadeProbe = lightFadeInOut.new(probeSwitch, lightsPath~"probe-light-intensity");
 fadeWhite = lightFadeInOut.new(whiteSwitch, lightsPath~"white-light-intensity");
+if(navStillOn) {
+	navLights = lightFadeInOut.new(navSwitch, lightsPath~"nav-lights-intensity");
+	navLights.fadeIn = 0.1;
+	navLights.fadeOut = 0.12;
+}
 #manipulate times if defaults don't fit your needs:
 #fadeLanding.fadeIn = 0.5;
 #fadeLanding.fadeOut = 0.8;
@@ -256,27 +239,26 @@ fadeWhite = lightFadeInOut.new(whiteSwitch, lightsPath~"white-light-intensity");
 
 ### the rest of your model load embedded Nasal code ###
 
-
-
     ]]>
     </load>
 
     <unload>
-	stopFire();
-      disintegrated = 0;
-      removelistener(listenCrash);
-      
-      #prevent multiple timers and listeners from running and fighting on next connect
+	 #prevent multiple timers and listeners from running and fighting on next connect
       #cleanly destroy MP property mirroring
       mirrorTimer.stop();
       mirrorTimer = nil;
       mirrorValues = nil;
       
       #cleanly destroy nav lights
-      if(navSwitch!=nil) setprop(navSwitch, 0);
-      navLights.del();
-      if(navSwitch!=nil) navLights.cycleTimer = nil;
-      navLights = nil;
+      if(navStillOn) {
+      	navLights.del();
+      }
+      else {
+      	if(navSwitch!=nil) setprop(navSwitch, 0);
+      	navLights.del();
+      	if(navSwitch!=nil) navLights.cycleTimer = nil;
+      	navLights = nil;
+      }
       
       #cleanly destroy beacon
       if(beaconSwitch!=nil) setprop(beaconSwitch, 0);
@@ -701,7 +683,7 @@ fadeWhite = lightFadeInOut.new(whiteSwitch, lightsPath~"white-light-intensity");
 		<offsets>
 			<x-m>0</x-m>
 			<y-m>0</y-m>
-			<z-m>-0.7</z-m>
+			<z-m>-1.9</z-m>
 			<roll-deg>90</roll-deg>
 		</offsets>
 

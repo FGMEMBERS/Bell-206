@@ -19,43 +19,35 @@
          x="0.77" y="0.0" z="1.10"
          nx="0.09" ny="0" nz="1.0"
          fx="1" fy="0" fz="0" ccw="0"
-         maxcollective="19.0" mincollective="-0.9"
-       mincyclicele="-6.2"  maxcyclicele="7"
-       mincyclicail="-5.0" maxcyclicail="4.2"
+         maxcollective="17.5" mincollective="-0.5"
+         mincyclicele="-6.1" maxcyclicele="6.5"
+         mincyclicail="-3.8" maxcyclicail="3.5"
          diameter="10.16" numblades="2"
-          weightperblade="66" 
-       twist="10.7" 
-       chord="0.40" 
-       rpm="399" 
-       relbladecenter="0.5" 
-       dynamic="0.65"
-       rellenflaphinge="0.05" 
-       delta3="0" delta="0.25" 
-       pitch-a="10" pitch-b="15" 
-       flapmin="-13" flapmax="13" 
-       flap0="-7.5" flap0factor="0" phi0="180"
-       notorque="0" dragfactor="0.30" 
-       translift-ve="20" 
-       translift-maxfactor="1.55" 
-       ground-effect-constant="0.2" 
-       taper="1"
-       number-of-segments="10" 
-       number-of-parts="10" 
-       rel-len-where-incidence-is-measured="0.5" 
-       rel-len-blade-start="0.15"
-
-       airfoil-lift-coefficient="7.3" 
-       airfoil-drag-coefficient0="0.0074" 
-       airfoil-drag-coefficient1="0.05" 
-       incidence-stall-zero-speed="18" 
-       incidence-stall-half-sonic-speed="9" 
-       lift-factor-stall="0.18" 
-       drag-factor-stall="8.0" 
-       stall-change-over="5.5" 
-       cyclic-factor="1.0" 
-       rotor-correction-factor="0.9" 
-       downwashfactor ="0.8" 
-       balance="0.999905">
+         weightperblade="94.4" twist="-10.0"
+         chord="0.332" rpm="394"
+         relbladecenter="0.5" dynamic="1.0"
+         rellenflaphinge="0.018"
+         sharedflaphinge="1"
+         delta3="0" delta=".30"
+         pitch-a="10" pitch-b="15"
+         flapmin="-15" flapmax="15"
+         flap0="-5" flap0factor="0"
+         notorque="0" dragfactor="0.30"
+         translift-ve="20"
+         translift-maxfactor="1.15"
+         ground-effect-constant="0.1"
+         taper="1"
+         number-of-segments="8" number-of-parts="8"
+         rel-len-where-incidence-is-measured="0.7" rel-len-blade-start="0.11"
+         airfoil-lift-coefficient="6.3" airfoil-drag-coefficient0="0.0075" airfoil-drag-coefficient1="0.25"
+         incidence-stall-zero-speed="18" incidence-stall-half-sonic-speed="9.0"
+         lift-factor-stall="0.18"
+         stall-change-over="5.5"
+         drag-factor-stall="8.0"
+         cyclic-factor="0.95"
+         rotor-correction-factor="0.93"
+         downwashfactor ="0.3"
+         balance="0.999985">
          <control-input axis="/controls/flight/aileron-trim" control="CYCLICAIL" split="true"/>
          <control-input axis="/controls/flight/aileron" control="CYCLICAIL" src0="-1.0" src1="1.0" dst0="-1.0" dst1="1.0"/>
          <control-input axis="/controls/flight/elevator-trim" control="CYCLICELE" split="true"/>
@@ -67,7 +59,7 @@
          x="-5.17" y="0.31" z="0"
          nx="0.00" ny="1" nz="-0.00"
          fx="1" fy="0" fz="0" ccw="0"  
-		 maxcollective="18.5" mincollective="-16"
+		 maxcollective="14.5" mincollective="-10"
   phi0="110"
   diameter="1.91" numblades="2" weightperblade="2" relbladecenter="0.7"
   dynamic="1" rpm="2219" rellenflaphinge="0.0" delta3="1" translift="0" delta="0.5"
@@ -100,12 +92,12 @@
   </rotor>
 
   <rotorgear max-power-engine="420"
-            max-power-rotor-brake="85"
-             rotorgear-friction="1.7"
-             engine-prop-factor="0.015"
-             engine-accel-limit="4"
-             yasimdragfactor="110"
-             yasimliftfactor="140">
+            max-power-rotor-brake="100"
+            rotorgear-friction="1.4"
+            engine-prop-factor="0.005"
+            engine-accel-limit="100"
+            yasimdragfactor="25.5"
+            yasimliftfactor="25">
              <control-input axis="/controls/engines/engine[0]/magnetos" control="ROTORGEARENGINEON"/>
   <control-input axis="/controls/rotor/brake" control="ROTORBRAKE"
                  src0="0.0" src1="1.0"
@@ -162,20 +154,32 @@
  <!-- left skid -->
   <gear x="2.33" y="0.95" z="-1.75"
         skid="1"
-        compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
+        compression="0.25"
+        spring="3"
+        sfric="1.0"
+        dfric="0.7"/>
 
   <gear x="0.2" y="0.95" z="-1.75"
         skid="1"
-        compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
+        compression="0.25"
+        spring="3"
+        sfric="1.0"
+        dfric="0.7"/>
 
   <!-- right skid -->
   <gear x="2.33" y="-0.95" z="-1.75"
         skid="1"
-        compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
+        compression="0.25"
+        spring="3"
+        sfric="1.0"
+        dfric="0.7"/>
 
   <gear x="0.2" y="-0.95" z="-1.75"
         skid="1"
-        compression="0.10" spring="0.8" sfric="0.5" dfric="0.4"/>
+        compression="0.25"
+        spring="3"
+        sfric="1.0"
+        dfric="0.7"/>
 
   <tank   x="0.77" y="0.0" z="0.00" capacity="460"/>
   <!-- work around bug in native-fdm.cxx:184 -->
